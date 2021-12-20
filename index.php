@@ -1,3 +1,11 @@
+<?php
+	//Start session
+	session_start();
+	
+	//Unset the variables stored in session
+	unset($_SESSION['username']);
+	unset($_SESSION['key']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,8 +67,8 @@
                             <li class="submenu">
                                 <a href="javascript:;">Sign in</a>
                                 <ul>
-                                    <li><a href="pages/samples/login.html">User Login</a></li>
-                                    <li><a href="pages/samples/admin-login.html">Admin</a></li>
+                                    <li><a href="pages/samples/login.php">User Login</a></li>
+                                    <li><a href="pages/samples/admin-login.php">Admin</a></li>
                                 </ul>
                             </li>
                             <li class="submenu">
@@ -331,7 +339,6 @@
             </div>
         </div>
     </footer>
-    
 
     <!-- jQuery -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>

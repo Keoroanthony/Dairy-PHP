@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Login page</title>
+  <title>Admin login</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../../vendors/feather/feather.css">
   <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
@@ -20,6 +20,31 @@
 </head>
 
 <body>
+
+<?php
+include_once 'dbConnection.php';
+$ref=@$_GET['q'];
+$username= $_POST['uname'];
+$password = $_POST['password'];
+
+$username = stripslashes($username);
+$username = addslashes($username);
+$password = stripslashes($password); 
+$password = addslashes($password);
+$password=md5($password); 
+$result = mysqli_query($con,"SELECT username FROM admin WHERE username= '$username' and password = '$password'") or die('Error');
+$count=mysqli_num_rows($result);
+if($count==1){
+session_start();
+if(isset($_SESSION['username'])){
+session_unset();}
+$_SESSION["name"] = 'Admin';
+$_SESSION["key"] ='123456789';
+$_SESSION["username"] = $username;
+header("location:adminpanel.php?q=1");
+}
+else header("location:$ref?w=Warning : Access denied");
+?>
   <div class="container-scroller">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="content-wrapper d-flex align-items-center auth px-0">
@@ -31,15 +56,15 @@
               </div>
               <h4>Hello! let's get started</h4>
               <h6 class="font-weight-light">Sign in to continue.</h6>
-              <form class="pt-3">
+              <form class="pt-3" role="form" method="post" action="admin-login,php?q=index.php">
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
+                  <input name="uname" maxlength="20"  placeholder="Admin Username" type="text" class="form-control form-control-lg" id="exampleInputEmail1">
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                  <input name="password" maxlength="15" placeholder="Password" type="password" class="form-control form-control-lg" id="exampleInputPassword1">
                 </div>
                 <div class="mt-3">
-                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="../../index.html">SIGN IN</a>
+                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit" name="login" value="Login">SIGN IN</a>
                 </div>
                 <div class="my-2 d-flex justify-content-between align-items-center">
                   <div class="form-check">
@@ -49,9 +74,6 @@
                     </label>
                   </div>
                   <a href="#" class="auth-link text-black">Forgot password?</a>
-                </div>
-                <div class="text-center mt-4 font-weight-light">
-                  Don't have an account? <a href="register.html" class="text-primary">Create</a>
                 </div>
               </form>
             </div>
