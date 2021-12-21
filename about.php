@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>Contact Page</title>
+    <title>About Page</title>
 
 
     <!-- Additional CSS Files -->
@@ -23,16 +23,10 @@
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
     <link rel="shortcut icon" href="images/logo-mini.svg" />
-<!--
 
-TemplateMo 571 Hexashop
-
-https://templatemo.com/tm-571-hexashop
-
--->
     </head>
     
-    body>
+    <body>
     
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -58,22 +52,22 @@ https://templatemo.com/tm-571-hexashop
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="index.html" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="about.html">About</a></li>
-                            <li class="scroll-to-section"><a href="index.html#women">Top Strories</a></li>
-                            <li class="scroll-to-section"><a href="index.html#explore">Explore</a></li>
+                            <li class="scroll-to-section"><a href="index.php" class="active">Home</a></li>
+                            <li class="scroll-to-section"><a href="about.php">About</a></li>
+                            <li class="scroll-to-section"><a href="index.php#women">Top Strories</a></li>
+                            <li class="scroll-to-section"><a href="index.php#explore">Explore</a></li>
                             <li class="submenu">
                                 <a href="javascript:;">Sign in</a>
                                 <ul>
-                                    <li><a href="pages/samples/login.html">User Login</a></li>
-                                    <li><a href="pages/samples/admin-login.html">Admin</a></li>
+                                    <li><a href="pages/login.php">User Login</a></li>
+                                    <li><a href="pages/admin-login.php">Admin</a></li>
                                 </ul>
                             </li>
                             <li class="submenu">
                                 <a href="javascript:;">FAQs</a>
                                 <ul>
-                                    <li><a href="about.html">Help</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="about.php">Help</a></li>
+                                    <li><a href="contact.php">Contact Us</a></li>
                                 </ul>
                             </li>
                         </ul>        
@@ -94,7 +88,8 @@ https://templatemo.com/tm-571-hexashop
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>Contact Us</h2>
+                        <h2>About Dear Diary</h2>
+                        <span>Being your mental wellness partner</span>
                     </div>
                 </div>
             </div>
@@ -102,43 +97,76 @@ https://templatemo.com/tm-571-hexashop
     </div>
     <!-- ***** Main Banner Area End ***** -->
 
-    <!-- ***** Contact Area Starts ***** -->
-    <div class="contact-us">
+    <!-- ***** About Area Starts ***** -->
+    <div class="about-us">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-heading">
-                        <h2>Say Hello. Don't Be Shy!</h2>
-                        <span>Get in touch with one of us</span>
+                <div class="col-lg-6">
+                    <div class="left-image">
+                        <img src="assets/images/about-left-image.jpeg" alt="" style="height: 400px;">
                     </div>
-                    <form id="contact" action="" method="post">
-                        <div class="row">
-                          <div class="col-lg-6">
-                            <fieldset>
-                              <input name="name" type="text" id="name" placeholder="Your name" required="">
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-6">
-                            <fieldset>
-                              <input name="email" type="text" id="email" placeholder="Your email" required="">
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-12">
-                            <fieldset>
-                              <textarea name="message" rows="6" id="message" placeholder="Your message" required=""></textarea>
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-12">
-                            <fieldset>
-                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
-                          </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <h4>Our Goals</h4>
+                        <span>To point at the importnace of mental health</span>
+                        <div class="quote">
+                            <i class="fa fa-quote-left"></i><p>Those living with mental health issues should be treated with care, understanding and compasion.</p>
                         </div>
-                      </form>
+                        <p>To create pathways to a suistainable a hopeful and fulfilling healing process</p>
+                        <p>Create awereness on the causes of mental illness and preventive measures to overcome them</p>
+                        <p>Help you find ways to to manage stress, anxiety ordepression</p>
+                        <!-- <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                        </ul> -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- ***** Contact Area Ends ***** -->
+    <!-- ***** About Area Ends ***** -->
+
+
+
+    <!-- ***** Services Area Starts ***** -->
+    <section class="our-services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2>Our Process</h2>
+                        <span>Details to details is what makes Hexashop different from the other themes.</span>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="service-item">
+                        <h4>Journaling</h4>
+                        <p>Writing your thoughts down is the first step towards iterpreting your feelings.</p>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="service-item">
+                        <h4>Diagnose</h4>
+                        <p>Get to know about your mental health condition.</p>
+                       
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="service-item">
+                        <h4>Facilitate the process</h4>
+                        <p>Talk about and work through your personal problems.</p>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- ***** Services Area Ends ***** -->
 
     <!-- ***** Subscribe Area Starts ***** -->
     <div class="subscribe">

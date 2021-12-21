@@ -61,21 +61,21 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="about.html">About</a></li>
+                            <li class="scroll-to-section"><a href="about.php">About</a></li>
                             <li class="scroll-to-section"><a href="#women">Top Strories</a></li>
                             <li class="scroll-to-section"><a href="#explore">Explore</a></li>
                             <li class="submenu">
                                 <a href="javascript:;">Sign in</a>
                                 <ul>
-                                    <li><a href="pages/samples/login.php">User Login</a></li>
-                                    <li><a href="pages/samples/admin-login.php">Admin</a></li>
+                                    <li><a href="pages/login.php">User Login</a></li>
+                                    <li><a href="pages/admin-login.php">Admin</a></li>
                                 </ul>
                             </li>
                             <li class="submenu">
                                 <a href="javascript:;">FAQs</a>
                                 <ul>
-                                    <li><a href="about.html">Help</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="about.php">Help</a></li>
+                                    <li><a href="contact.php">Contact Us</a></li>
                                 </ul>
                             </li>
                         </ul>        
