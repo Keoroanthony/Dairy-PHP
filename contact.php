@@ -65,7 +65,7 @@ https://templatemo.com/tm-571-hexashop
                             <li class="submenu">
                                 <a href="javascript:;">Sign in</a>
                                 <ul>
-                                    <li><a href="pages/samples/login.php">User Login</a></li>
+                                    <li><a href="pages/user-login.php">User Login</a></li>
                                     <li><a href="pages/samples/admin-login.php">Admin</a></li>
                                 </ul>
                             </li>

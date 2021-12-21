@@ -67,7 +67,7 @@
                             <li class="submenu">
                                 <a href="javascript:;">Sign in</a>
                                 <ul>
-                                    <li><a href="pages/login.php">User Login</a></li>
+                                    <li><a href="pages/user-login.php">User Login</a></li>
                                     <li><a href="pages/admin-login.php">Admin</a></li>
                                 </ul>
                             </li>
