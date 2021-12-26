@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Home Page</title>
+  <title>Vent Page</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
@@ -21,6 +21,15 @@
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/logo-mini.svg" />
+   <!--alert message-->
+   <?php if(@$_GET['w'])
+   {echo'<script>alert("'.@$_GET['w'].'");</script>';}
+   ?>
+   <!--alert message end-->
+  <script>
+  function validateForm() {var y = document.forms["form"]["title"].value;	if (y == null || y == "") {alert("Title must be filled out.");return false;}
+  }
+</script>
 </head>
 <body>
 <?php
@@ -113,7 +122,11 @@ $name = $_SESSION['username'];
               <img src="images/faces/face28.jpg" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item" href="user-login.php">
+              <a class="dropdown-item">
+                <i class="ti-settings text-primary"></i>
+                Settings
+              </a>
+              <a class="dropdown-item">
                 <i class="ti-power-off text-primary"></i>
                 Logout
               </a>
@@ -135,7 +148,9 @@ $name = $_SESSION['username'];
       <!-- partial:partials/_settings-panel.html -->
       <div class="theme-setting-wrapper">
         <div id="settings-trigger" style="background-color: white !important;">
+        <a href="write.php">
           <img src="images/mini-logo.png" alt="start" style="height: 30px;">
+        </a>
         </div>
         <div id="theme-settings" class="settings-panel">
           <i class="settings-close ti-close"></i>
@@ -158,6 +173,9 @@ $name = $_SESSION['username'];
         <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
           </li>
         </ul>
         <div class="tab-content" id="setting-content">
@@ -219,8 +237,85 @@ $name = $_SESSION['username'];
                 </li>
               </ul>
             </div>
+            <h4 class="px-3 text-muted mt-5 font-weight-light mb-0">Events</h4>
+            <div class="events pt-4 px-3">
+              <div class="wrapper d-flex mb-2">
+                <i class="ti-control-record text-primary mr-2"></i>
+                <span>Feb 11 2018</span>
+              </div>
+              <p class="mb-0 font-weight-thin text-gray">Creating component page build a js</p>
+              <p class="text-gray mb-0">The total number of sessions</p>
+            </div>
+            <div class="events pt-4 px-3">
+              <div class="wrapper d-flex mb-2">
+                <i class="ti-control-record text-primary mr-2"></i>
+                <span>Feb 7 2018</span>
+              </div>
+              <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
+              <p class="text-gray mb-0 ">Call Sarah Graves</p>
+            </div>
           </div>
           <!-- To do section tab ends -->
+          <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
+            <div class="d-flex align-items-center justify-content-between border-bottom">
+              <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
+              <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">See All</small>
+            </div>
+            <ul class="chat-list">
+              <li class="list active">
+                <div class="profile"><img src="images/faces/face1.jpg" alt="image"><span class="online"></span></div>
+                <div class="info">
+                  <p>Thomas Douglas</p>
+                  <p>Available</p>
+                </div>
+                <small class="text-muted my-auto">19 min</small>
+              </li>
+              <li class="list">
+                <div class="profile"><img src="images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
+                <div class="info">
+                  <div class="wrapper d-flex">
+                    <p>Catherine</p>
+                  </div>
+                  <p>Away</p>
+                </div>
+                <div class="badge badge-success badge-pill my-auto mx-2">4</div>
+                <small class="text-muted my-auto">23 min</small>
+              </li>
+              <li class="list">
+                <div class="profile"><img src="images/faces/face3.jpg" alt="image"><span class="online"></span></div>
+                <div class="info">
+                  <p>Daniel Russell</p>
+                  <p>Available</p>
+                </div>
+                <small class="text-muted my-auto">14 min</small>
+              </li>
+              <li class="list">
+                <div class="profile"><img src="images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
+                <div class="info">
+                  <p>James Richardson</p>
+                  <p>Away</p>
+                </div>
+                <small class="text-muted my-auto">2 min</small>
+              </li>
+              <li class="list">
+                <div class="profile"><img src="images/faces/face5.jpg" alt="image"><span class="online"></span></div>
+                <div class="info">
+                  <p>Madeline Kennedy</p>
+                  <p>Available</p>
+                </div>
+                <small class="text-muted my-auto">5 min</small>
+              </li>
+              <li class="list">
+                <div class="profile"><img src="images/faces/face6.jpg" alt="image"><span class="online"></span></div>
+                <div class="info">
+                  <p>Sarah Graves</p>
+                  <p>Available</p>
+                </div>
+                <small class="text-muted my-auto">47 min</small>
+              </li>
+            </ul>
+          </div>
+          <!-- chat tab ends -->
         </div>
       </div>
       <!-- partial -->
@@ -228,13 +323,13 @@ $name = $_SESSION['username'];
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="home.php">
+            <a class="nav-link" href="home.html">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="compose.php">
+            <a class="nav-link" href="pages/documentation/documentation.html">
               <i class="icon-paper menu-icon"></i>
               <span class="menu-title">Compose</span>
             </a>
@@ -271,7 +366,7 @@ $name = $_SESSION['username'];
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="user-login.php">
+            <a class="nav-link" href="pages/documentation/documentation.html">
               <i class="icon-ban menu-icon"></i>
               <span class="menu-title">Sign out</span>
             </a>
@@ -282,45 +377,53 @@ $name = $_SESSION['username'];
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-            <div class="col-md-12 grid-margin">
-              <div class="row">
-                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold">Welcome <?php echo $name ?></h3>
-                  <h6 class="font-weight-normal mb-0">Were glad to have you back</h6>
-                </div>
-                <div class="col-12 col-xl-4">
-                 <div class="justify-content-end d-flex">
-                  <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                    <button class="btn btn-sm btn-light bg-white " type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                     <i class="mdi mdi-calendar"></i> Today (<?php echo date("Y-m-d"); ?>)
-                    </button>
-                  </div>
-                 </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">Simple Guide  on how to journal</p>
-                  <iframe width="1000" height="400" src="https://www.youtube.com/embed/T9efJ868yxo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <p class="card-title">Just vent <img src="assets/images/mini-logo.png" alt="" style="height: 20px;"></p>
+                  <div class="row">
+                    <div class="col-12">
+                        <div class="compose-content">
+                            <form action="#">
+                                <div class="form-group">
+                                    <input type="text" class="form-control bg-transparent" placeholder=" Subject:" name="title" id="title">
+                                </div>
+                                <div class="form-group">
+                                    <textarea id="email-compose-editor" class="textarea_editor form-control bg-transparent" rows="15" placeholder="Enter text ..."></textarea>
+                                </div>
+                            </form>
+                            <h5 class="mb-4"><i class="fa fa-paperclip"></i> Attatchment</h5>
+                            <form action="#" class="d-flex flex-column align-items-center justify-content-center">
+                                <div class="fallback w-100">
+                                    <input type="file" class="dropify" data-default-file="" />
+                                </div>
+                            </form>
+                        </div>
+                        <div class="text-left mt-4 mb-5">
+                            <button class="btn btn-primary btn-sl-sm mr-3" type="button"><span
+                                    class="mr-2"><i class="fa fa-paper-plane"></i></span> Send</button>
+                            <button class="btn btn-dark btn-sl-sm" type="button"><span class="mr-2"><i
+                                        class="fa fa-times" aria-hidden="true"></i></span> Discard</button>
+                        </div>
+                    </div>
+                  </div>
+                  </div>
                 </div>
+
+                
               </div>
             </div>
-          </div>
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021. <a href="https://www.datasyde.co.ke/" target="_blank">Datasyde Technology limited</a> All rights reserved.</span>
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
           </div>
-          <!-- <div class="d-sm-flex justify-content-center justify-content-sm-between">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
-          </div> -->
+          </div>
         </footer> 
         <!-- partial -->
       </div>

@@ -42,7 +42,7 @@
               <h6 class="font-weight-light">Sign in to continue.</h6>
               <form class="pt-3" action="user.php?q=../index.php" method="POST">
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-lg" name="username" placeholder="Enter your username">
+                  <input type="email" class="form-control form-control-lg" name="email" placeholder="Enter your email">
                 </div>
                 <div class="form-group">
                   <input type="password" class="form-control form-control-lg" name="password" placeholder="Enter your Password">

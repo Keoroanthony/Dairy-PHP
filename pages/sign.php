@@ -1,50 +1,46 @@
 <?php
 include_once 'dbConnection.php';
 ob_start();
-$name = $_POST['name'];
-$name= ucwords(strtolower($name));
-$username = $_POST['username'];
-$gender = $_POST['gender'];
-$age = $_POST['age'];
-$password = $_POST['password'];
-$email = $_POST['email'];
-$bio = $_POST['bio'];
-$picture = $_POST['picture'];
-$regdate = date("Y/m/d");
 
+$id=uniqid();
+
+$name = $_POST['name'];
 $name = stripslashes($name);
 $name = addslashes($name);
-$name = ucwords(strtolower($name));
+$name= ucwords(strtolower($name));
 
-$username = stripslashes($username);
-$username = addslashes($username);
-$username = ucwords(strtolower($username));
+$age = $_POST['age'];
+$age = stripslashes($age);
+$age = addslashes($age);
 
+$gender = $_POST['gender'];
 $gender = stripslashes($gender);
 $gender = addslashes($gender);
 
+$email = $_POST['email'];
+$email = stripslashes($email);
+$email = addslashes($email);
+
+$password = $_POST['password'];
 $password = stripslashes($password);
 $password = addslashes($password);
 $password = md5($password);
 
-$email = stripslashes($email);
-$email = addslashes($email);
+$username = $_POST['username'];
 
+$bio = $_POST['bio'];
 
+$date=date("Y-m-d");
 
-$q3=mysqli_query($con,"INSERT INTO user VALUES  ('$name', '$username', '$gender' '$age' , '$password' , '$email' , '$bio', '$picture', '$regdate')");
+$q3=mysqli_query($con,"INSERT INTO user VALUES  ('$id' , '$name', '$age' , '$gender' , '$email' , '$password' , '$username' , '$bio' , '$date')");
 if($q3)
 {
-session_start();
-$_SESSION["email"] = $email;
-$_SESSION["username"] = $username;
-
 $ref = $_GET['q'];
 header("location:$ref");
 }
 else
 {
-header("location:index.php?q7=Query error");
+header("location:index.php?q7=Email Already Registered!!!");
 }
 ob_end_flush();
 ?>

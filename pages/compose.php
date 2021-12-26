@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Compose Page</title>
+  <title>Home Page</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
@@ -23,14 +23,25 @@
   <link rel="shortcut icon" href="images/logo-mini.svg" />
 </head>
 <body>
+<?php
+ include_once 'dbConnection.php';
+session_start();
+  if($_SESSION['key']!="user"){
+header("location:user-login.php");
+
+}
+else
+{
+$name = $_SESSION['username'];
+}?>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <a class="navbar-brand brand-logo mr-5" href="index.html">
-          <img src="assets/images/logo.png" class="mr-2" alt="logo" style="height: 60px; width: 80px;"/>
+          <img src="images/logo.png" class="mr-2" alt="logo" style="height: 60px; width: 80px;"/>
         </a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/mini-logo.png" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/mini-logo.png" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -102,11 +113,7 @@
               <img src="images/faces/face28.jpg" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item">
-                <i class="ti-settings text-primary"></i>
-                Settings
-              </a>
-              <a class="dropdown-item">
+              <a class="dropdown-item" href="user-login.php">
                 <i class="ti-power-off text-primary"></i>
                 Logout
               </a>
@@ -127,7 +134,11 @@
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_settings-panel.html -->
       <div class="theme-setting-wrapper">
-        <div id="settings-trigger"><i class="ti-settings"></i></div>
+        <div id="settings-trigger" style="background-color: white !important;">
+        <a href="write.php">
+          <img src="images/mini-logo.png" alt="start" style="height: 30px;">
+        </a>
+        </div>
         <div id="theme-settings" class="settings-panel">
           <i class="settings-close ti-close"></i>
           <p class="settings-heading">SIDEBAR SKINS</p>
@@ -149,9 +160,6 @@
         <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
           </li>
         </ul>
         <div class="tab-content" id="setting-content">
@@ -213,85 +221,8 @@
                 </li>
               </ul>
             </div>
-            <h4 class="px-3 text-muted mt-5 font-weight-light mb-0">Events</h4>
-            <div class="events pt-4 px-3">
-              <div class="wrapper d-flex mb-2">
-                <i class="ti-control-record text-primary mr-2"></i>
-                <span>Feb 11 2018</span>
-              </div>
-              <p class="mb-0 font-weight-thin text-gray">Creating component page build a js</p>
-              <p class="text-gray mb-0">The total number of sessions</p>
-            </div>
-            <div class="events pt-4 px-3">
-              <div class="wrapper d-flex mb-2">
-                <i class="ti-control-record text-primary mr-2"></i>
-                <span>Feb 7 2018</span>
-              </div>
-              <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
-              <p class="text-gray mb-0 ">Call Sarah Graves</p>
-            </div>
           </div>
           <!-- To do section tab ends -->
-          <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
-            <div class="d-flex align-items-center justify-content-between border-bottom">
-              <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
-              <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">See All</small>
-            </div>
-            <ul class="chat-list">
-              <li class="list active">
-                <div class="profile"><img src="images/faces/face1.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Thomas Douglas</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">19 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
-                <div class="info">
-                  <div class="wrapper d-flex">
-                    <p>Catherine</p>
-                  </div>
-                  <p>Away</p>
-                </div>
-                <div class="badge badge-success badge-pill my-auto mx-2">4</div>
-                <small class="text-muted my-auto">23 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face3.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Daniel Russell</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">14 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
-                <div class="info">
-                  <p>James Richardson</p>
-                  <p>Away</p>
-                </div>
-                <small class="text-muted my-auto">2 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face5.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Madeline Kennedy</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">5 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face6.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Sarah Graves</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">47 min</small>
-              </li>
-            </ul>
-          </div>
-          <!-- chat tab ends -->
         </div>
       </div>
       <!-- partial -->
@@ -299,13 +230,13 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="home.html">
+            <a class="nav-link" href="home.php">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/documentation/documentation.html">
+            <a class="nav-link" href="compose.php">
               <i class="icon-paper menu-icon"></i>
               <span class="menu-title">Compose</span>
             </a>
@@ -342,7 +273,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/documentation/documentation.html">
+            <a class="nav-link" href="user-login.php">
               <i class="icon-ban menu-icon"></i>
               <span class="menu-title">Sign out</span>
             </a>
@@ -353,53 +284,144 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <p class="card-title">Just vent <img src="assets/images/mini-logo.png" alt="" style="height: 20px;"></p>
-                  <div class="row">
-                    <div class="col-12">
-                        <div class="compose-content">
-                            <form action="#">
-                                <div class="form-group">
-                                    <input type="text" class="form-control bg-transparent" placeholder=" Subject:">
-                                </div>
-                                <div class="form-group">
-                                    <textarea id="email-compose-editor" class="textarea_editor form-control bg-transparent" rows="15" placeholder="Enter text ..."></textarea>
-                                </div>
-                            </form>
-                            <h5 class="mb-4"><i class="fa fa-paperclip"></i> Attatchment</h5>
-                            <form action="#" class="d-flex flex-column align-items-center justify-content-center">
-                                <div class="fallback w-100">
-                                    <input type="file" class="dropify" data-default-file="" />
-                                </div>
-                            </form>
-                        </div>
-                        <div class="text-left mt-4 mb-5">
-                            <button class="btn btn-primary btn-sl-sm mr-3" type="button"><span
-                                    class="mr-2"><i class="fa fa-paper-plane"></i></span> Send</button>
-                            <button class="btn btn-dark btn-sl-sm" type="button"><span class="mr-2"><i
-                                        class="fa fa-times" aria-hidden="true"></i></span> Discard</button>
-                        </div>
-                    </div>
-                  </div>
-                  </div>
+            <div class="col-md-12 grid-margin">
+              <div class="row">
+                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                  <h3 class="font-weight-bold"><?php echo $name ?></h3>
+                  <h6 class="font-weight-normal mb-0">Have a view on what to write about</h6>
                 </div>
-
-                
+                <div class="col-12 col-xl-4">
+                 <div class="justify-content-end d-flex">
+                  <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+                    <button class="btn btn-sm btn-light bg-white " type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                     <i class="mdi mdi-calendar"></i> Today (<?php echo date("Y-m-d"); ?>)
+                    </button>
+                  </div>
+                 </div>
+                </div>
               </div>
             </div>
+          </div>
+          <div class="row">
+          <div class="col-md-6 grid-margin transparent">
+              <div class="row">
+                <div class="col-md-6 mb-4 stretch-card transparent">
+                  <div class="card card-tale">
+                    <div class="card-body">
+                    <a href="write.php" style="color: white !important; text-decoration: none !important;">
+                      <p class="mb-4">Hello Diary</p>
+                      <p class="fs-30 mb-2">Hello Diary &#128059;</p>
+                      <p>
+                          Dear Diary, let me tell you what happened todays..
+                      </p>
+                    </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4 stretch-card transparent">
+                  <div class="card card-dark-blue">
+                    <div class="card-body">
+                        <a href="write.php" style="color: white !important; text-decoration: none !important;">
+                          <p class="mb-4">Feelings &#128512; &#128514; 	&#128525; &#128545; &#128549;</p>
+                          <!-- <p class="fs-30 mb-2">HMy feelings</p> -->
+                          <p>
+                              What kind of feelings did your day bring you?
+                          </p>
+                        </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+                  <div class="card card-light-blue">
+                    <div class="card-body">
+                        <a href="write.php" style="color: white !important; text-decoration: none !important;">
+                          <p class="mb-4">Interaction with your day...</p>
+                          <!-- <p class="fs-30 mb-2">Hello Diary</p> -->
+                          <p>
+                              I wish i..<br>What did i leran today?<br>
+                              what ddi i do just for me today?
+    
+                          </p>
+                        </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 stretch-card transparent">
+                  <div class="card card-light-danger">
+                    <div class="card-body">
+                        <a href="write.php" style="color: white !important; text-decoration: none !important;">
+                          <p class="mb-4">Looking back</p>
+                          <!-- <p class="fs-30 mb-2">Hello Diary</p> -->
+                          <p>
+                            All in all which kind of day was it?<br>
+                            Aweseme/Great/Pathetic..
+
+                          </p>
+                        </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 grid-margin transparent">
+              <div class="row">
+                <div class="col-md-6 mb-4 stretch-card transparent">
+                  <div class="card card-tale">
+                    <div class="card-body">
+                        <a href="write.php" style="color: white !important; text-decoration: none !important;">
+                          <p class="mb-4">Thanks giving</p>
+                          <!-- <p class="fs-30 mb-2">Hello Diary</p> -->
+                          <p>
+                             What am i most grateful for today?
+    
+                          </p>
+                        </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4 stretch-card transparent">
+                  <div class="card card-dark-blue">
+                    <div class="card-body">
+                    <a href="write.php" style="color: white !important; text-decoration: none !important;">
+                      <p class="mb-4">Goodbyes</p>
+                      <p class="fs-30 mb-2">Dear Diary</p>
+                      <p>
+                          Until tommorow Diary...&#128524;
+
+                      </p>
+                    </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 mb-4 mb-lg-0 stretch-card transparent">
+                  <div class="card card-light-blue">
+                    <div class="card-body">
+                    <a href="write.php" style="color: white !important; text-decoration: none !important;">
+                      <p class="mb-4">Dear Diary</p>
+                      <p class="fs-30 mb-2">Stories<span style='font-size:50px;'>&#128171;</span></p>
+                      <p>
+                          Inside every human is a story worth sharing<br>
+                          What's your story today?
+                          WRITE . SAVE . SHARE
+                      </p>
+                    </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021. <a href="https://www.datasyde.co.ke/" target="_blank">Datasyde Technology limited</a> All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
           </div>
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+          <!-- <div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
-          </div>
+          </div> -->
         </footer> 
         <!-- partial -->
       </div>
