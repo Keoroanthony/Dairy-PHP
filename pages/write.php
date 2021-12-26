@@ -384,27 +384,24 @@ $name = $_SESSION['username'];
                   <div class="row">
                     <div class="col-12">
                         <div class="compose-content">
-                            <form action="#">
+                            <form name="form" enctype="multipart/form-data" action="article.php?q=write.php" onSubmit="return validateForm()" method="POST">
                                 <div class="form-group">
                                     <input type="text" class="form-control bg-transparent" placeholder=" Subject:" name="title" id="title">
                                 </div>
                                 <div class="form-group">
                                     <textarea id="email-compose-editor" class="textarea_editor form-control bg-transparent" rows="15" placeholder="Enter text ..."></textarea>
                                 </div>
-                            </form>
+                            
                             <h5 class="mb-4"><i class="fa fa-paperclip"></i> Attatchment</h5>
-                            <form action="#" class="d-flex flex-column align-items-center justify-content-center">
-                                <div class="fallback w-100">
-                                    <input type="file" class="dropify" data-default-file="" />
-                                </div>
+                            <div class="fallback w-100">
+                              <input type="file" class="dropify" data-default-file="" name="uploadfile" >
+                            </div>
+                            <div class="text-left mt-4 mb-5">
+                              <input type="submit" value="Save" class="btn btn-primary btn-sl-sm mr-3" name="submit" >
+                            </div>
                             </form>
                         </div>
-                        <div class="text-left mt-4 mb-5">
-                            <button class="btn btn-primary btn-sl-sm mr-3" type="button"><span
-                                    class="mr-2"><i class="fa fa-paper-plane"></i></span> Send</button>
-                            <button class="btn btn-dark btn-sl-sm" type="button"><span class="mr-2"><i
-                                        class="fa fa-times" aria-hidden="true"></i></span> Discard</button>
-                        </div>
+
                     </div>
                   </div>
                   </div>
