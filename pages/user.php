@@ -24,6 +24,7 @@ while($row = mysqli_fetch_array($result)) {
 }
 $_SESSION["username"] = $username;
 $_SESSION["key"] ='user';
+$_SESSION["email"] = $email;
 $date=date("Y-m-d");
 $time=date("h:i:sa");
 $ip=$_SERVER['REMOTE_ADDR'];
