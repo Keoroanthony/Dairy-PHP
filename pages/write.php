@@ -338,7 +338,7 @@ $name = $_SESSION['username'];
                                     <input type="text" class="form-control bg-transparent" placeholder=" Subject:" name="title" id="title">
                                 </div>
                                 <div class="form-group">
-                                    <textarea id="email-compose-editor" class="textarea_editor form-control bg-transparent" rows="15" placeholder="Enter text ..."></textarea>
+                                    <textarea id="email-compose-editor" class="textarea_editor form-control bg-transparent" rows="15" name="article" placeholder="Enter text ..."></textarea>
                                 </div>
                             
                             <h5 class="mb-4"><i class="fa fa-paperclip"></i> Attatchment</h5>

@@ -16,7 +16,7 @@ else
 $q3=mysqli_query($con,"UPDATE articles SET star=0 WHERE id='$id' ") or die ('Error');
 }
 }
-header("location:account.php?q1=2");
+header("location:archives.php?q1=2");
 }
 
 //get printable view
@@ -43,9 +43,8 @@ while($row = mysqli_fetch_array($result1)) {
 	$email	 = $row['email'];
 if($email==$_SESSION['email'] || (isset($_SESSION['key']) )){	
 $result = mysqli_query($con,"DELETE FROM articles WHERE id='$id' ") or die('Error');
-header("location:account.php?q1=2");
-}else{
-header("location:invalid.php");}
+header("location:archives.php?q1=2");
+}else{header("location:invalid.php");}
 }
 }
 
@@ -68,12 +67,12 @@ $q3=mysqli_query($con,"UPDATE articles SET share=0 WHERE id='$id' ") or die ('Er
 header("location:invalid.php");}
 
 }
-header("location:account.php?q1=2");
+header("location:archives.php?q1=2");
 }
 
 //delete feedback
 if(isset($_SESSION['key'])){
-if(@$_GET['fdid'] && $_SESSION['key']=='sunny7785068889') {
+if(@$_GET['fdid'] && $_SESSION['key']=='admin') {
 $id=@$_GET['fdid'];
 $result = mysqli_query($con,"DELETE FROM feedback WHERE id='$id' ") or die('Error');
 header("location:adminpanel.php?q=3");
@@ -82,7 +81,7 @@ header("location:adminpanel.php?q=3");
 }
 //delete user
 if(isset($_SESSION['key'])){
-if(@$_GET['demail'] && $_SESSION['key']=='sunny7785068889') {
+if(@$_GET['demail'] && $_SESSION['key']=='admin') {
 $demail=@$_GET['demail'];
 $result = mysqli_query($con,"DELETE FROM user WHERE email='$demail' ") or die('Error');
 header("location:adminpanel.php?q=1");

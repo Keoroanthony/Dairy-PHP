@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Starred Page</title>
+  <title>Edit Page</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
@@ -236,7 +236,7 @@ $email = $_SESSION['email'];
               <div class="row">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                   <h3 class="font-weight-bold">Welcome <?php echo $name ?></h3>
-                  <h6 class="font-weight-normal mb-0">What you star goes here</h6>
+                  <h6 class="font-weight-normal mb-0">What you write goes here</h6>
                 </div>
                 <div class="col-12 col-xl-4">
                  <div class="justify-content-end d-flex">
@@ -255,30 +255,32 @@ $email = $_SESSION['email'];
               <div class="card">
                 <div class="card-body">
                     <?php 
-                        $result = mysqli_query($con,"SELECT * FROM `articles` WHERE email = '$email' ORDER BY `articles`.`date` DESC") or die('Error');
-                        echo  '<div class="mCustomScrollbar area" data-mcs-theme="dark" style="margin-left:10px;margin-right:10px; max-height:480px; line-height:35px;padding:5px;"><table class="table table-striped">
-                        <tr><td></td><td><b>Title</b></td><td><b>Date</b></td><td><b>Time</b></td><td></td><td></td><td></td><td></td><td></td></tr>';
-                        while($row = mysqli_fetch_array($result)) {
-                            $date = $row['date'];
-                            $date= date("d-m-Y",strtotime($date));
-                            $time = $row['time'];
-                            $title = $row['title'];
-                            $star = $row['star'];
-                            $id = $row['id'];
-                            $share = $row['share'];
-                            if($star==1){echo '<tr><td><a title="starred" href="update.php?sid='.$id.'"><b><i class="fa fa-star-o" aria-hidden="true" style="color:orange"></i></b></a></td>';
-                            echo '<td><a title="Click to open article" href="viewarticle.php?aid='.$id.'">'.$title.'</a></td><td>'.$date.'</td><td>'.$time.'</td>
-                            <td><a title="Open Article" href="viewarticle.php?aid='.$id.'"><b><i class="fa fa-file-text" aria-hidden="true"></i></b></a></td>';
-                            if($share==0)echo '<td><a title="share for public" href="update.php?shid='.$id.'" ><b><i class="fa fa-share" aria-hidden="true"></i></b></a></td>';
-                            else echo '<td><a title="shared for public" href="update.php?shid='.$id.'" ><b><i class="fa fa-share" aria-hidden="true" style="color:orange"></i></b></a></td>';
-                            echo '<td><a title="Edit Article" href="editarticle.php?eid='.$id.'"><b><i class="fa fa-pencil-square-o" aria-hidden="true"></i></b></a></td>
-                            <td><a title="Get printable view" target="_blank" href="update.php?pid='.$id.'"><b><i class="fa fa-print" aria-hidden="true"></i></b></a></td>
-                            <td><a title="Delete Article" href="update.php?did='.$id.'"><b><i class="fa fa-trash" aria-hidden="true"></i></b></a></td>
-                        
-                            </tr>';
-                        }}
-                        echo '</table></div>';
-                        ?>
+                       $id=@$_GET['eeid'];
+                       $result = mysqli_query($con,"SELECT * FROM `articles` WHERE id='$id' ") or die('Error');
+                       while($row = mysqli_fetch_array($result)) {
+                           $title = $row['title'];
+                           $article = $row['article'];
+                           $email = $row['email'];
+                           $filename = $row['filename'];
+                           if($email==$_SESSION['email']){	
+                       
+                       echo '<form name="form" enctype="multipart/form-data" action="article.php?q=write.php" onSubmit="return validateForm()" method="POST">
+                       <div class="form-group">
+                           <input type="text" class="form-control bg-transparent" value=" '.$title.'" name="title" id="title">
+                       </div>
+                       <div class="form-group">
+                           <textarea id="email-compose-editor" class="textarea_editor form-control bg-transparent" rows="15" name="article">'.$article.'</textarea>
+                       </div>
+                   <h5 class="mb-4"><i class="fa fa-paperclip"></i> Attatchment</h5>
+                   <div class="fallback w-100">
+                     <input type="file" class="dropify" data-default-file="" name="uploadfile" value=" '.$filename.'" >
+                   </div>
+                   <div class="text-left mt-4 mb-5">
+                     <input type="submit" value="Save" class="btn btn-primary btn-sl-sm mr-3" name="submit" >
+                   </div>
+                   </form>';
+                       $result1 = mysqli_query($con,"DELETE FROM articles WHERE id='$id' ") or die('Error');  }
+                       }?>
                 </div>
               </div>
             </div>

@@ -26,7 +26,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/documentation/documentation.html">
+            <a class="nav-link" href="shared.php">
               <i class="icon-contract menu-icon"></i>
               <span class="menu-title">shared</span>
             </a>
@@ -40,7 +40,7 @@
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Profile </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Activity log </a></li>
+                <li class="nav-item"> <a class="nav-link" href="activitylog.php"> Activity log </a></li>
               </ul>
             </div>
           </li>

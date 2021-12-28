@@ -268,11 +268,11 @@ $email = $_SESSION['email'];
                         	$share = $row['share'];
                         	if($star==0)echo '<tr><td><a title="not starred" href="update.php?sid='.$id.'"><b><i class="fa fa-star-o" aria-hidden="true"></i></b></a></td>';
                         	else echo '<tr><td><a title="starred" href="update.php?sid='.$id.'"><b><i class="fa fa-star-o" aria-hidden="true" style="color:orange"></i></b></a></td>';
-                        	echo '<td><a title="Click to open article" href="archives.php?aid='.$id.'">'.$title.'</a></td><td>'.$date.'</td><td>'.$time.'</td>
-                        	<td><a title="Open Article" href="account.php?aid='.$id.'"><b><i class="fa fa-file-text" aria-hidden="true"></i></b></a></td>';
+                        	echo '<td><a title="Click to open article" href="viewarticle.php?aid='.$id.'">'.$title.'</a></td><td>'.$date.'</td><td>'.$time.'</td>
+                        	<td><a title="Open Article" href="viewarticle.php?aid='.$id.'"><b><i class="fa fa-file-text" aria-hidden="true"></i></b></a></td>';
                         	if($share==0)echo '<td><a title="share for public" href="update.php?shid='.$id.'" ><b><i class="fa fa-share" aria-hidden="true"></i></b></a></td>';
                         	else echo '<td><a title="shared for public" href="update.php?shid='.$id.'" ><b><i class="fa fa-share" aria-hidden="true" style="color:orange"></i></b></a></td>';
-                        	echo '<td><a title="Edit Article" href="account.php?eeid='.$id.'"><b><i class="fa fa-pencil-square-o" aria-hidden="true"></i></b></a></td>
+                        	echo '<td><a title="Edit Article" href="editarticle.php?eeid='.$id.'"><b><i class="fa fa-pencil-square-o" aria-hidden="true"></i></b></a></td>
                         	<td><a title="Get printable view" target="_blank" href="update.php?pid='.$id.'"><b><i class="fa fa-print" aria-hidden="true"></i></b></a></td>
                         	<td><a title="Delete Article" href="update.php?did='.$id.'"><b><i class="fa fa-trash" aria-hidden="true"></i></b></a></td>
                         
