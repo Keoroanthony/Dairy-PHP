@@ -10,13 +10,16 @@ while($row = mysqli_fetch_array($result)) {
 if($star==0)
 {
 $q3=mysqli_query($con,"UPDATE articles SET star=1 WHERE id='$id' ") or die ('Error');
+header("location:archives.php?q1=2");
+exit();
 }
 else
 {
 $q3=mysqli_query($con,"UPDATE articles SET star=0 WHERE id='$id' ") or die ('Error');
-}
-}
 header("location:archives.php?q1=2");
+exit();
+}
+}
 }
 
 //get printable view
@@ -44,6 +47,7 @@ while($row = mysqli_fetch_array($result1)) {
 if($email==$_SESSION['email'] || (isset($_SESSION['key']) )){	
 $result = mysqli_query($con,"DELETE FROM articles WHERE id='$id' ") or die('Error');
 header("location:archives.php?q1=2");
+exit();
 }else{header("location:invalid.php");}
 }
 }
@@ -59,15 +63,18 @@ if($email==$_SESSION['email']){
 if($share==0)
 {
 $q3=mysqli_query($con,"UPDATE articles SET share=1 WHERE id='$id' ") or die ('Error');
+header("location:archives.php?q1=2");
+exit();
 }
 else
 {
 $q3=mysqli_query($con,"UPDATE articles SET share=0 WHERE id='$id' ") or die ('Error');
+header("location:archives.php?q1=2");
+exit();
 }}else{
 header("location:invalid.php");}
 
 }
-header("location:archives.php?q1=2");
 }
 
 //delete feedback
