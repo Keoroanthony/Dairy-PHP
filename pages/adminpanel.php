@@ -33,6 +33,21 @@ header("location:admin-login.php");
 else
 {
 $name = $_SESSION['username'];
+
+$result=mysqli_query($con, "SELECT email from user");
+$rowcount=mysqli_num_rows($result);
+
+$result=mysqli_query($con, "SELECT id from articles where admin = 1");
+$publiccount=mysqli_num_rows($result);
+
+$result=mysqli_query($con, "SELECT id from articles where share = 1");
+$storycount=mysqli_num_rows($result);
+
+$result=mysqli_query($con, "SELECT id from articles where star = 1");
+$starcount=mysqli_num_rows($result);
+// $result=mysqli_query($con, "SELECT  from user");
+// $rowcount=mysqli_num_rows($result);
+
 }?>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -323,8 +338,8 @@ $name = $_SESSION['username'];
             </a>
             <div class="collapse" id="charts">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="approvedstories.php">Approved</a></li>
-                <li class="nav-item"> <a class="nav-link" href="notapprovedstories.php">No Approved</a></li>
+                <li class="nav-item"> <a class="nav-link" href="approvedstories.php">Shared</a></li>
+                <li class="nav-item"> <a class="nav-link" href="notapprovedstories.php">Shared to all</a></li>
               </ul>
             </div>
           </li>
@@ -382,7 +397,7 @@ $name = $_SESSION['username'];
                         <h2 class="mb-0 font-weight-normal"><i class="icon-sun mr-2"></i></h2>
                       </div>
                       <div class="ml-2">
-                        <h4 class="location font-weight-normal">34</h4>
+                        <h4 class="location font-weight-normal"><?php echo $rowcount; ?></h4>
                         <h6 class="font-weight-normal">Total users</h6>
                       </div>
                     </div>
@@ -396,7 +411,7 @@ $name = $_SESSION['username'];
                   <div class="card card-tale">
                     <div class="card-body">
                       <p class="mb-4">Stories to share publicly</p>
-                      <p class="fs-30 mb-2">4006</p>
+                      <p class="fs-30 mb-2"><?php echo $publiccount; ?></p>
                     </div>
                   </div>
                 </div>
@@ -404,7 +419,7 @@ $name = $_SESSION['username'];
                   <div class="card card-dark-blue">
                     <div class="card-body">
                       <p class="mb-4">Stories currently being shared </p>
-                      <p class="fs-30 mb-2">61344</p>
+                      <p class="fs-30 mb-2"><?php echo $storycount; ?></p>
                     </div>
                   </div>
                 </div>
@@ -414,7 +429,7 @@ $name = $_SESSION['username'];
                   <div class="card card-light-blue">
                     <div class="card-body">
                       <p class="mb-4">Starred stories</p>
-                      <p class="fs-30 mb-2">34040</p>
+                      <p class="fs-30 mb-2"><?php echo $starcount; ?></p>
                     </div>
                   </div>
                 </div>
@@ -422,7 +437,7 @@ $name = $_SESSION['username'];
                   <div class="card card-light-danger">
                     <div class="card-body">
                       <p class="mb-4">Recent feedback</p>
-                      <p class="fs-30 mb-2">47033</p>
+                      <p class="fs-30 mb-2">0</p>
                     </div>
                   </div>
                 </div>
@@ -434,13 +449,13 @@ $name = $_SESSION['username'];
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021. <a href="https://www.datasyde.co.ke/" target="_blank">Datasyde Technology limited</a> All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
           </div>
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+          <!-- <div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
-          </div>
-        </footer> 
+          </div> -->
+        </footer>
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
