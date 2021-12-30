@@ -35,6 +35,27 @@
     </head>
     
     <body>
+    <?php
+   include_once 'dbConnection.php';
+   session_start();
+    unset($_SESSION['username']);
+	unset($_SESSION['key']);
+    unset($_SESSION['name']);
+    unset($_SESSION['email']);
+
+    $result = mysqli_query($con,"SELECT * FROM articles WHERE admin = 1 ") or die('Error');
+    while($row = mysqli_fetch_array($result)) {
+        $id = $row['id'];
+        $title = $row['title'];
+        $article = $row['article'];
+        $date = $row['date'];
+        $date= date("d-m-Y",strtotime($date));
+        $time = $row['time'];
+        $mail = $row['email'];
+        $filename = $row['filename'];
+    }
+ 
+   ?>
     
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">

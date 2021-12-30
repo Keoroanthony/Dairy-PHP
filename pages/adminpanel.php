@@ -45,9 +45,6 @@ $storycount=mysqli_num_rows($result);
 
 $result=mysqli_query($con, "SELECT id from articles where star = 1");
 $starcount=mysqli_num_rows($result);
-// $result=mysqli_query($con, "SELECT  from user");
-// $rowcount=mysqli_num_rows($result);
-
 }?>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -321,50 +318,9 @@ $starcount=mysqli_num_rows($result);
         </div>
       </div>
       <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="adminpanel.php">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-              <i class="icon-contract menu-icon"></i>
-              <span class="menu-title">Shared Stories</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="charts">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="approvedstories.php">Shared</a></li>
-                <li class="nav-item"> <a class="nav-link" href="notapprovedstories.php">Shared to all</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <i class="icon-head menu-icon"></i>
-              <span class="menu-title">User</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pofile.php"> Profile </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Activity log </a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="admin-login.php">
-              <i class="icon-ban menu-icon"></i>
-              <span class="menu-title">Sign out</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- partial -->
+      <?php
+      include 'adminleftnav.php';
+      ?>
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
@@ -390,7 +346,7 @@ $starcount=mysqli_num_rows($result);
             <div class="col-md-6 grid-margin stretch-card">
               <div class="card tale-bg">
                 <div class="card-people mt-auto">
-                  <img src="images/dashboard/people.svg" alt="people">
+                  <a href="userspage.php"><img src="images/dashboard/people.svg" alt="people"></a>
                   <div class="weather-info">
                     <div class="d-flex">
                       <div>

@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Archives Page</title>
+  <title>feedback Page</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
@@ -26,8 +26,8 @@
 <?php
  include_once 'dbConnection.php';
 session_start();
-  if($_SESSION['key']!="user") {
-header("location:user-login.php");
+  if($_SESSION['key']!="admin"){
+header("location:admin-login.php");
 
 }
 else
@@ -226,7 +226,7 @@ $email = $_SESSION['email'];
       </div>
       <!-- partial -->
        <?php
-      include 'leftnav.php';
+      include 'adminleftnav.php';
       ?>
       <!-- partial -->
       <div class="main-panel">
@@ -236,7 +236,7 @@ $email = $_SESSION['email'];
               <div class="row">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                   <h3 class="font-weight-bold">Welcome <?php echo $name ?></h3>
-                  <h6 class="font-weight-normal mb-0">Your article</h6>
+                  <h6 class="font-weight-normal mb-0">Shared to all content goes here</h6>
                 </div>
                 <div class="col-12 col-xl-4">
                  <div class="justify-content-end d-flex">
@@ -252,28 +252,30 @@ $email = $_SESSION['email'];
           </div>
           <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                    <?php 
-                        $id=@$_GET['aid'];
-                        $result = mysqli_query($con,"SELECT * FROM articles WHERE id='$id' ") or die('Error');
-                        while($row = mysqli_fetch_array($result)) {
-                            $title = $row['title'];
-                            $article = $row['article'];
-                            $date = $row['date'];
-                            $date= date("d-m-Y",strtotime($date));
-                            $time = $row['time'];
-                            $mail = $row['email'];
-                            $result1 = mysqli_query($con,"SELECT name FROM user WHERE email='$mail' ") or die('Error');
-                            while($row = mysqli_fetch_array($result1)) {
-                            $by = $row['name'];
-                        }
-                        echo '<a title="Back to Archive" href="update.php?q1=2"><b><span class="glyphicon glyphicon-level-up" aria-hidden="true"></span></b></a><h2 style="text-align:center; margin-top:-15px;font-family: "Ubuntu", sans-serif;"><b>'.$title.'</b></h1>';
-                         echo '<div class="mCustomScrollbar" data-mcs-theme="dark" style="margin-left:10px;margin-right:10px; max-height:450px; line-height:35px;padding:5px;"><span style="line-height:35px;padding:5px;">-&nbsp;<b>DATE:</b>&nbsp;'.$date.'</span>
-                        <span style="line-height:35px;padding:5px;">&nbsp;<b>Time:</b>&nbsp;'.$time.'</span><span style="line-height:35px;padding:5px;">&nbsp;<b>By:</b>&nbsp;'.$by.'</span><br />'.$article.'</div>';}
-                        ?>
-                </div>
-              </div>
+             
+            <?php
+               $result = mysqli_query($con,"SELECT * FROM `feedback` ORDER BY `feedback`.`date` DESC") or die('Error');
+               echo  '<div class="mCustomScrollbar area" data-mcs-theme="dark" style="margin-left:10px;margin-right:10px; max-height:480px; line-height:35px;padding:5px;"><table class="table table-striped">
+               <tr><td><b>S.N.</b></td><td><b>Subject</b></td><td><b>Email</b></td><td><b>Date</b></td><td><b>Time</b></td><td><b>By</b></td><td></td><td></td></tr>';
+               $c=1;
+               while($row = mysqli_fetch_array($result)) {
+               	$date = $row['date'];
+               	$date= date("d-m-Y",strtotime($date));
+               	$time = $row['time'];
+               	$name = $row['name'];
+               	$email = $row['email'];
+               	$id = $row['id'];
+               	 echo '<tr><td>'.$c++.'</td>';
+               	echo '<td><a title="Click to open article" href="viewfeedback.php?fid='.$id.'"></a></td><td>'.$email.'</td><td>'.$date.'</td><td>'.$time.'</td><td>'.$name.'</td>
+               	<td><a title="Open Feedback" href="viewfeedback.php?fid='.$id.'"><b><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></b></a></td>';
+               	echo '<td><a title="Delete Feedback" href="update.php?fdid='.$id.'"><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b></a></td>
+               
+               	</tr>';
+               }
+               echo '</table></div>';
+         
+            ?>
+               
             </div>
           </div>
         </div>

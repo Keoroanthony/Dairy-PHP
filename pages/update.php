@@ -95,4 +95,25 @@ header("location:adminpanel.php?q=1");
 }else
 {header("location:invalid.php");}
 }
+
+//starred--
+if(@$_GET['add']) {
+	$id=@$_GET['add'];
+	$result = mysqli_query($con,"SELECT admin FROM articles WHERE id='$id' ") or die('Error');
+	while($row = mysqli_fetch_array($result)) {
+		$admin = $row['admin'];
+	if($admin==0)
+	{
+	$q3=mysqli_query($con,"UPDATE articles SET admin=1 WHERE id='$id' ") or die ('Error');
+	header("location:adminshared.php?q1=2");
+	exit();
+	}
+	else
+	{
+	$q3=mysqli_query($con,"UPDATE articles SET admin=0 WHERE id='$id' ") or die ('Error');
+	header("location:adminshared.php?q1=2");
+	exit();
+	}
+	}
+	}
 ?>

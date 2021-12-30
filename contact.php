@@ -111,26 +111,26 @@ https://templatemo.com/tm-571-hexashop
                         <h2>Say Hello. Don't Be Shy!</h2>
                         <span>Get in touch with one of us</span>
                     </div>
-                    <form id="contact" action="" method="post">
+                    <form id="contact" method="post" action="feed.php?q=contact.php">
                         <div class="row">
                           <div class="col-lg-6">
                             <fieldset>
-                              <input name="name" type="text" id="name" placeholder="Your name" required="">
+                              <input name="name" type="text" id="name" placeholder="Your name" required>
                             </fieldset>
                           </div>
                           <div class="col-lg-6">
                             <fieldset>
-                              <input name="email" type="text" id="email" placeholder="Your email" required="">
+                              <input name="email" type="text" id="email" placeholder="Your email" required>
                             </fieldset>
                           </div>
                           <div class="col-lg-12">
                             <fieldset>
-                              <textarea name="message" rows="6" id="message" placeholder="Your message" required=""></textarea>
+                              <textarea name="message" rows="6" id="message" placeholder="Your message" required></textarea>
                             </fieldset>
                           </div>
                           <div class="col-lg-12">
                             <fieldset>
-                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
+                              <input type="submit" class="main-dark-button" name="submit" value="send">
                           </div>
                         </div>
                       </form>
