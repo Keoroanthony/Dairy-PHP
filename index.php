@@ -5,6 +5,24 @@
 	//Unset the variables stored in session
 	unset($_SESSION['username']);
 	unset($_SESSION['key']);
+    unset($_SESSION['name']);
+    unset($_SESSION['email']);
+
+    include_once 'dbConnection.php';
+   
+ 
+     $result = mysqli_query($con,"SELECT * FROM articles WHERE admin = 1 ") or die('Error');
+     while($row = mysqli_fetch_array($result)) {
+         $id = $row['id'];
+         $title = $row['title'];
+         $article = $row['article'];
+         $date = $row['date'];
+         $date= date("d-m-Y",strtotime($date));
+         $time = $row['time'];
+         $mail = $row['email'];
+         $filename = $row['filename'];
+     }
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,28 +53,7 @@
     </head>
     
     <body>
-    <?php
-   include_once 'dbConnection.php';
-   session_start();
-    unset($_SESSION['username']);
-	unset($_SESSION['key']);
-    unset($_SESSION['name']);
-    unset($_SESSION['email']);
 
-    $result = mysqli_query($con,"SELECT * FROM articles WHERE admin = 1 ") or die('Error');
-    while($row = mysqli_fetch_array($result)) {
-        $id = $row['id'];
-        $title = $row['title'];
-        $article = $row['article'];
-        $date = $row['date'];
-        $date= date("d-m-Y",strtotime($date));
-        $time = $row['time'];
-        $mail = $row['email'];
-        $filename = $row['filename'];
-    }
- 
-   ?>
-    
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
         <div class="jumper">
@@ -207,11 +204,20 @@
                 <div class="col-lg-12">
                     <div class="men-item-carousel">
                         <div class="owl-men-item owl-carousel">
+                           <?php 
+                            $res = mysqli_query($con,"SELECT * FROM articles WHERE admin = 1 ") or die('Error');
+                
+                            if (mysqli_num_rows($res) > 0) {
+                            	while ($stories = mysqli_fetch_assoc($res)) {  ?>
+
                             <div class="service-item">
-                                <h4>Synther Vaporware</h4>
-                                <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit, sed do eiusmod temp incididunt ut labore, et dolore quis ipsum suspend.</p>
-                                <img src="assets/images/service-01.jpg" alt="">
+                                <h4><?=$stories['email']?></h4>
+                                <p><?=$stories['article']?></p>
+                                <p><?=$stories['filename']?></p>
+                                <img src="pages/uploads/<?=$stories['filename']?>" style="height: 280px;">
                             </div>
+                            <?php } }?>
+                            
                             <div class="service-item">
                                 <h4>Locavore Squidward</h4>
                                 <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit, sed do eiusmod temp incididunt ut labore, et dolore quis ipsum suspend.</p>

@@ -42,6 +42,7 @@ header("location:user-login.php");
 else
 {
 $name = $_SESSION['username'];
+$email = $_SESSION['email'];
 }?>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -333,7 +334,10 @@ $name = $_SESSION['username'];
                   <div class="row">
                     <div class="col-12">
                         <div class="compose-content">
-                            <form name="form" enctype="multipart/form-data" action="article.php?q=write.php" onSubmit="return validateForm()" method="POST">
+                            <form name="form" action="article.php?q=write.php" onSubmit="return validateForm()" method="POST" enctype="multipart/form-data">
+                            <?php if (isset($_GET['error'])): ?>
+	                            	<p style="color:red"><?php echo $_GET['error']; ?></p>
+	                          <?php endif ?>
                                 <div class="form-group">
                                     <input type="text" class="form-control bg-transparent" placeholder=" Subject:" name="title" id="title">
                                 </div>
@@ -343,7 +347,7 @@ $name = $_SESSION['username'];
                             
                             <h5 class="mb-4"><i class="fa fa-paperclip"></i> Attatchment</h5>
                             <div class="fallback w-100">
-                              <input type="file" class="dropify" data-default-file="" name="uploadfile" >
+                              <input type="file" class="dropify" name="my_image">
                             </div>
                             <div class="text-left mt-4 mb-5">
                               <input type="submit" value="Save" class="btn btn-primary btn-sl-sm mr-3" name="submit" >

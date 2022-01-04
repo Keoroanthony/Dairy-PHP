@@ -5,6 +5,7 @@
 	//Unset the variables stored in session
 	unset($_SESSION['username']);
 	unset($_SESSION['key']);
+  unset($_SESSION['email']);
 ?>
 
 <!DOCTYPE html>

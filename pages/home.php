@@ -43,6 +43,7 @@ header("location:user-login.php");
 else
 {
 $name = $_SESSION['username'];
+$email = $_SESSION['email'];
 }?>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
