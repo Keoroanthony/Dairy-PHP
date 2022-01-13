@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
-    <link rel="shortcut icon" href="images/logo-mini.svg" />
+    <link rel="shortcut icon" href="assets/images/logo-mini.svg" />
 
     </head>
     

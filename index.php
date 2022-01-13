@@ -9,20 +9,7 @@
     unset($_SESSION['email']);
 
     include_once 'dbConnection.php';
-   
- 
-     $result = mysqli_query($con,"SELECT * FROM articles WHERE admin = 1 ") or die('Error');
-     while($row = mysqli_fetch_array($result)) {
-         $id = $row['id'];
-         $title = $row['title'];
-         $article = $row['article'];
-         $date = $row['date'];
-         $date= date("d-m-Y",strtotime($date));
-         $time = $row['time'];
-         $mail = $row['email'];
-         $filename = $row['filename'];
-     }
-  
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +35,13 @@
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
-    <link rel="shortcut icon" href="images/logo-mini.svg" />
+    <link rel="shortcut icon" href="assets/images/logo-mini.svg" />
+
+    <!--alert message-->
+    <?php if(@$_GET['w'])
+    {echo'<script>alert("'.@$_GET['w'].'");</script>';}
+    ?>
+    <!--alert message end-->
 
     </head>
     
@@ -208,29 +201,45 @@
                             $res = mysqli_query($con,"SELECT * FROM articles WHERE admin = 1 ") or die('Error');
                 
                             if (mysqli_num_rows($res) > 0) {
-                            	while ($stories = mysqli_fetch_assoc($res)) {  ?>
+                            	while ($stories = mysqli_fetch_assoc($res)) {  
+                                    $id = $stories['id'];?>
+                
 
                             <div class="service-item">
-                                <h4><?=$stories['email']?></h4>
-                                <p><?=$stories['article']?></p>
-                                <p><?=$stories['filename']?></p>
+                                <h4><?=$stories['title']?></h4>
+                                <?php
+                                $string = $stories['article'];
+                                $string = strip_tags($string);
+                                if (strlen($string) > 50) {
+
+                                    // truncate string
+                                    $stringCut = substr($string, 0, 50);
+                                    $endPoint = strrpos($stringCut, ' ');
+                                
+                                    //if the string doesn't contain any space then it will cut without word basis.
+                                    $string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                                    $string .= '...<a title="Click to open story" href="viewstory.php?aid='.$id.'">Read more</a>';
+                                }
+                                echo $string;
+                                ?>
+                              
                                 <img src="pages/uploads/<?=$stories['filename']?>" style="height: 280px;">
                             </div>
                             <?php } }?>
                             
                             <div class="service-item">
                                 <h4>Locavore Squidward</h4>
-                                <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit, sed do eiusmod temp incididunt ut labore, et dolore quis ipsum suspend.</p>
+                                <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit.</p>
                                 <img src="assets/images/service-02.jpg" alt="">
                             </div>
                             <div class="service-item">
                                 <h4>Health Gothfam</h4>
-                                <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit, sed do eiusmod temp incididunt ut labore, et dolore quis ipsum suspend.</p>
+                                <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit.</p>
                                 <img src="assets/images/service-03.jpg" alt="">
                             </div>
                             <div class="service-item">
                                 <h4>Health Gothfam</h4>
-                                <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit, sed do eiusmod temp incididunt ut labore, et dolore quis ipsum suspend.</p>
+                                <p>Lorem ipsum dolor sit amet, consecteturti adipiscing elit.</p>
                                 <img src="assets/images/about-left-image.jpeg" alt="" style="height: 280px;">
                             </div>
                         </div>

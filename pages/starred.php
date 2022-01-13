@@ -135,9 +135,7 @@ $email = $_SESSION['email'];
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_settings-panel.html -->
       <div class="theme-setting-wrapper">
-        <div id="settings-trigger" style="background-color: white !important;">
-          <img src="images/mini-logo.png" alt="start" style="height: 30px;">
-        </div>
+      <div id="settings-trigger"><i class="ti-settings"></i></div>
         <div id="theme-settings" class="settings-panel">
           <i class="settings-close ti-close"></i>
           <p class="settings-heading">SIDEBAR SKINS</p>
@@ -252,8 +250,6 @@ $email = $_SESSION['email'];
           </div>
           <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
                     <?php 
                         $result = mysqli_query($con,"SELECT * FROM `articles` WHERE email = '$email' ORDER BY `articles`.`date` DESC") or die('Error');
                         echo  '<div class="mCustomScrollbar area" data-mcs-theme="dark" style="margin-left:10px;margin-right:10px; max-height:480px; line-height:35px;padding:5px;"><table class="table table-striped">
@@ -279,8 +275,6 @@ $email = $_SESSION['email'];
                         }}
                         echo '</table></div>';
                         ?>
-                </div>
-              </div>
             </div>
           </div>
         </div>

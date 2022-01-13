@@ -1,3 +1,9 @@
+<?php
+	//Start session
+	session_start();
+
+    include_once 'dbConnection.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +15,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>Contact Page</title>
+    <title>Story Page</title>
 
 
     <!-- Additional CSS Files -->
@@ -23,16 +29,10 @@
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
     <link rel="shortcut icon" href="assets/images/logo-mini.svg" />
-<!--
 
-TemplateMo 571 Hexashop
-
-https://templatemo.com/tm-571-hexashop
-
--->
     </head>
     
-    body>
+    <body>
     
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -56,8 +56,8 @@ https://templatemo.com/tm-571-hexashop
                             <img src="assets/images/logo.png">
                         </a>
                         <!-- ***** Logo End ***** -->
-                       <!-- ***** Menu Start ***** -->
-                       <ul class="nav">
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
                             <li class="scroll-to-section"><a href="index.php" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="about.php">About</a></li>
                             <li class="scroll-to-section"><a href="index.php#women">Top Strories</a></li>
@@ -66,7 +66,7 @@ https://templatemo.com/tm-571-hexashop
                                 <a href="javascript:;">Sign in</a>
                                 <ul>
                                     <li><a href="pages/user-login.php">User Login</a></li>
-                                    <li><a href="pages/samples/admin-login.php">Admin</a></li>
+                                    <li><a href="pages/admin-login.php">Admin</a></li>
                                 </ul>
                             </li>
                             <li class="submenu">
@@ -88,103 +88,38 @@ https://templatemo.com/tm-571-hexashop
     </header>
     <!-- ***** Header Area End ***** -->
 
-    <!-- ***** Main Banner Area Start ***** -->
-    <div class="page-heading about-page-heading" id="top">
+    <br><br><br>
+
+
+    <!-- ***** About Area Starts ***** -->
+    <div class="about-us">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="inner-content">
-                        <h2>Contact Us</h2>
+            <?php 
+            $id=@$_GET['aid'];
+            $res = mysqli_query($con,"SELECT * FROM articles WHERE id='$id' ") or die('Error');
+            
+            if (mysqli_num_rows($res) > 0) {
+            	while ($stories = mysqli_fetch_assoc($res)) {  ?>
+                <div class="col-lg-6">
+                    <div class="left-image">
+                        <img src="pages/uploads/<?=$stories['filename']?>" style="height: 400px;">
                     </div>
                 </div>
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <h4><?=$stories['title']?></h4>
+                        <span><?=$stories['email']?></span>
+                        <p><?=$stories['article']?></p>
+                    </div>
+                </div>
+                <?php } }?>
             </div>
         </div>
     </div>
-    <!-- ***** Main Banner Area End ***** -->
+    <!-- ***** About Area Ends ***** -->
 
-    <!-- ***** Contact Area Starts ***** -->
-    <div class="contact-us">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-heading">
-                        <h2>Say Hello. Don't Be Shy!</h2>
-                        <span>Get in touch with one of us</span>
-                    </div>
-                    <form id="contact" method="post" action="feed.php?q=contact.php">
-                        <div class="row">
-                          <div class="col-lg-6">
-                            <fieldset>
-                              <input name="name" type="text" id="name" placeholder="Your name" required>
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-6">
-                            <fieldset>
-                              <input name="email" type="text" id="email" placeholder="Your email" required>
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-12">
-                            <fieldset>
-                              <textarea name="message" rows="6" id="message" placeholder="Your message" required></textarea>
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-12">
-                            <fieldset>
-                              <input type="submit" class="main-dark-button" name="submit" value="send">
-                          </div>
-                        </div>
-                      </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ***** Contact Area Ends ***** -->
-
-    <!-- ***** Subscribe Area Starts ***** -->
-    <div class="subscribe">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="section-heading">
-                        <h2>Dear Diary guarantees privacy to your articals</h2>
-                        <span>Subsribe to our our new letter to get updates and helpful materials to facilate your mental wellness journey</span>
-                    </div>
-                    <form id="subscribe" action="" method="get">
-                        <div class="row">
-                          <div class="col-lg-5">
-                            <fieldset>
-                              <input name="name" type="text" id="name" placeholder="Your Name" required="">
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-5">
-                            <fieldset>
-                              <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email Address" required="">
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-2">
-                            <fieldset>
-                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
-                            </fieldset>
-                          </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-lg-4">
-                    <div class="row">
-                        <div class="col-6">
-                            <ul>
-                                <li>Phone:<br><span>010-020-0340</span></li>
-                                <li>Email:<br><span>info@company.com</span></li>
-                                <li>Social Media:<br><span><a href="#">Facebook</a>, <a href="#">Instagram</a>, <a href="#">Behance</a>, <a href="#">Linkedin</a></span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ***** Subscribe Area Ends ***** -->
-
+    
     <!-- ***** Footer Start ***** -->
     <footer>
         <div class="container">

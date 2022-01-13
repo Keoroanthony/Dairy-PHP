@@ -148,11 +148,7 @@ $email = $_SESSION['email'];
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_settings-panel.html -->
       <div class="theme-setting-wrapper">
-        <div id="settings-trigger" style="background-color: white !important;">
-        <a href="write.php">
-          <img src="images/mini-logo.png" alt="start" style="height: 30px;">
-        </a>
-        </div>
+      <div id="settings-trigger"><i class="ti-settings"></i></div>
         <div id="theme-settings" class="settings-panel">
           <i class="settings-close ti-close"></i>
           <p class="settings-heading">SIDEBAR SKINS</p>

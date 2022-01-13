@@ -5,7 +5,7 @@ session_start();
 if (isset($_POST['submit']) && isset($_FILES['my_image'])) {
 
 	include 'dbConnection.php';
-
+$ref=@$_GET['q'];
 $email = $_SESSION['email'];
 $id=uniqid();
 $date=date("Y-m-d");
@@ -28,8 +28,7 @@ $admin=0;
 
 	if ($error === 0) {
 		if ($img_size > 125000) {
-			$em = "Sorry, your file is too large.";
-		    header("Location: write.php?error=$em");
+			header("location:$ref?w=Sorry, your file is too large.");
 		}else {
 			$img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
 			$img_ex_lc = strtolower($img_ex);
@@ -45,15 +44,13 @@ $admin=0;
 				$sql = "INSERT INTO articles(email, id, date, time, article, title, star, share, nick, admin, filename) 
 				        VALUES('$email', '$id', '$date', '$time', '$article', '$title', '$star', '$share', '$nick', '$admin', '$new_img_name')";
 				mysqli_query($con, $sql);
-				header("Location: write.php?q1=2");
+				header("Location: write.php?q1=2,w=Saved!");
 			}else {
-				$em = "You can only upload files of the type jpg, jpeg, png";
-		        header("Location: write.php?error=$em");
+				header("location:$ref?w=You can only upload files of the type jpg, jpeg, png");
 			}
 		}
 	}else {
-		$em = "unknown error occurred!";
-		header("Location: write.php?error=$em");
+		header("location:$ref?w=unknown error occurred!");
 	}
 
 }else {
