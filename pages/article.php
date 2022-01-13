@@ -44,7 +44,7 @@ $admin=0;
 				$sql = "INSERT INTO articles(email, id, date, time, article, title, star, share, nick, admin, filename) 
 				        VALUES('$email', '$id', '$date', '$time', '$article', '$title', '$star', '$share', '$nick', '$admin', '$new_img_name')";
 				mysqli_query($con, $sql);
-				header("Location: write.php?q1=2,w=Saved!");
+				header("location: write.php?q1=2");
 			}else {
 				header("location:$ref?w=You can only upload files of the type jpg, jpeg, png");
 			}
